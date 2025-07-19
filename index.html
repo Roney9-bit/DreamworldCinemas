@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header>
+        <h1>DreamWorld Cinemas</h1>
+        <p>Your Movie Booking Destination</p>
+    </header>
+
+    <main>
+        <!-- Movie List -->
+        <section id="movie-list">
+            <h2>Currently Running Movies</h2>
+            <div class="movie" id="movie1">
+                <img src="endgame.jpg" alt="Avengers: Endgame Poster">
+                <h3>Avengers: Endgame</h3>
+                <p><strong>Genre:</strong> Action, Adventure</p>
+                <p><strong>Duration:</strong> 3h 2m</p>
+                <p><strong>Description:</strong> The Avengers assemble once more to undo the damage caused by Thanos.</p>
+                <div class="showtimes">
+                    <button onclick="selectMovie('Avengers: Endgame', '2024-11-22 18:30')">Showtime: 18:30</button>
+                    <button onclick="selectMovie('Avengers: Endgame', '2024-11-22 21:00')">Showtime: 21:00</button>
+                </div>
+            </div>
+
+            <div class="movie" id="movie2">
+                <img src="spiderman.jpg" alt="Spider-Man: No Way Home Poster">
+                <h3>Spider-Man: No Way Home</h3>
+                <p><strong>Genre:</strong> Action, Fantasy</p>
+                <p><strong>Duration:</strong> 2h 28m</p>
+                <p><strong>Description:</strong> Peter Parker seeks help to erase the knowledge of his secret identity from the world.</p>
+                <div class="showtimes">
+                    <button onclick="selectMovie('Spider-Man: No Way Home', '2024-11-22 20:00')">Showtime: 20:00</button>
+                    <button onclick="selectMovie('Spider-Man: No Way Home', '2024-11-22 23:30')">Showtime: 23:30</button>
+                </div>
+            </div>
+
+            <div class="movie" id="movie3">
+                <img src="batman.jpg" alt="The Batman Poster">
+                <h3>The Batman</h3>
+                <p><strong>Genre:</strong> Action, Mystery</p>
+                <p><strong>Duration:</strong> 2h 55m</p>
+                <p><strong>Description:</strong> Batman uncovers corruption in Gotham City that connects to his own family.</p>
+                <div class="showtimes">
+                    <button onclick="selectMovie('The Batman', '2024-11-23 17:00')">Showtime: 17:00</button>
+                    <button onclick="selectMovie('The Batman', '2024-11-23 20:30')">Showtime: 20:30</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seat Selection Section -->
+        <section id="seat-selection-section" style="display:none;">
+            <h2>Select Seats for <span id="selected-movie-name-seat"></span></h2>
+            <p>Showtime: <span id="selected-showtime-seat"></span></p>
+            <div id="seat-map">
+                <!-- Seats will be generated dynamically -->
+            </div>
+            <button id="continue-booking" onclick="proceedToCheckout()" style="display:none;">Proceed to Checkout</button>
+        </section>
+
+        <!-- Ticket Booking Form -->
+        <section id="booking-section" style="display:none;">
+            <h2>Book Tickets for <span id="selected-movie-name"></span></h2>
+            <p>Showtime: <span id="selected-showtime"></span></p>
+            <form id="booking-form">
+                <label for="num-tickets">Number of Tickets:</label>
+                <input type="number" id="num-tickets" name="num-tickets" min="1" max="10" required>
+                <button type="submit">Book Now</button>
+            </form>
+            <div id="booking-result" style="display:none;">
+                <h3>Your booking is successful!</h3>
+                <h5>(Payment must be made at our multiplex's ticket counter or else entry will be denied)</h5>
+                <p><strong>Tickets booked:</strong> <span id="tickets-booked"></span></p>
+                <p><strong>Total Amount:</strong> $<span id="total-amount"></span></p>
+                <div id="qr-code" style="margin-top: 20px;"></div>
+            </div>
+        </section>
+
+        <!-- QSR (Food Chains) Selection -->
+        <section id="food-section" style="display:none;">
+            <h2>Choose Your Food</h2>
+            <p>Available QSRs (Quick Service Restaurants):</p>
+            <div class="food-option">
+                <input type="checkbox" id="food1" value="Burger King"> <label for="food1">Burger King</label>
+            </div>
+            <div class="food-option">
+                <input type="checkbox" id="food2" value="Domino's"> <label for="food2">Domino's</label>
+            </div>
+            <div class="food-option">
+                <input type="checkbox" id="food3" value="Starbucks"> <label for="food3">Starbucks</label>
+            </div>
+            <button onclick="finalizeBooking()">Finalize Booking</button>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DreamWorld Cinemas. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
